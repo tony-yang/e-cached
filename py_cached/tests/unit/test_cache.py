@@ -10,7 +10,7 @@ class TestCache(unittest.TestCase):
     def setUp(self):
         self.c = Cache()
 
-    def test_set_key(self):
+    def test_set_get_key(self):
         self.c.set('test-key', 15)
         output = self.c.get('test-key')
         expected = 15

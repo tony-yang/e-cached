@@ -4,7 +4,7 @@ import (
   "testing"
 )
 
-func TestSetKey(t *testing.T) {
+func TestSetGetKey(t *testing.T) {
   entries := []struct {
     key string
     val string
