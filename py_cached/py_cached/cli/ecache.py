@@ -7,13 +7,17 @@ from py_cached.core.client import CacheClient
 def main():
     logger.info('Calling cached main()')
     print('Welcome to ecache!')
-
     cs = CacheClient()
-    cs.send_command('SET a abc')
-    cs.send_command('GET a')
-    cs.send_command('SET d def')
-    cs.send_command('GET d')
-    cs.send_command('GET a')
+    while True:
+        if not cs:
+            cs = CacheClient()
+        command = input('> ')
+        print('Command = {}'.format(command))
+        command.strip()
+        if command.lower() == 'quit' or command.lower() == 'exit':
+            break
+
+        cs.send_command(command)
 
 if __name__ == '__main__':
     main()

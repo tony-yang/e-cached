@@ -10,4 +10,8 @@ class Cache:
         self.cache[k] = v
 
     def get(self, k):
-        return self.cache[k]
+        if k in self.cache:
+            value = self.cache[k]
+        else:
+            value = None
+        return value
