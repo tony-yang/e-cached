@@ -2,7 +2,6 @@
 import logging, py_cached.settings
 logger = logging.getLogger(__name__)
 
-import argparse
 from py_cached.core.server import CacheServer
 
 def main():

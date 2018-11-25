@@ -31,8 +31,8 @@ class CacheClient:
             logger.info('Command = {!r}'.format(command))
             self.sock.sendall(command)
             return_value = self.sock.recv(self.buffer_size)
-            if return_value:
-                print('{!r}'.format(return_value))
+            if return_value and return_value.decode() != '#':
+                print('{}'.format(return_value.decode()))
         except socket.error as err:
             print('ERROR: Closing socket due to error: {}'.format(err))
             logger.info('ERROR: Closing socket due to error: {}'.format(err))

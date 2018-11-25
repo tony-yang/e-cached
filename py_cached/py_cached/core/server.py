@@ -34,12 +34,22 @@ class CacheServer:
         return sock
 
     def serve_request(self, command, cache):
-        if command.decode().upper().startswith('SET'):
-            print('### Cache a with b')
-            cache.set('a', 'b')
-        elif command.decode().upper().startswith('GET'):
-            print('### Get cache with key a')
-            value = cache.get('a')
+        command_string = command.decode().strip().split()
+        action = command_string[0].upper().strip()
+
+        if action == 'SET':
+            if len(command_string) != 3:
+                raise Exception('ERROR: expect both key and value are provided to the `SET` action')
+            key = command_string[1]
+            value = command_string[2]
+            print('### Cache {} with {}'.format(key, value))
+            cache.set(key, value)
+        elif action == 'GET':
+            if len(command_string) != 2:
+                raise Exception('ERROR: expect only key is provided to the `GET` action')
+            key = command_string[1]
+            print('### Get cache with key {}'.format(key))
+            value = cache.get(key)
             return value
 
     def start_server(self, sock, cache):
