@@ -15,3 +15,8 @@ class TestCache(unittest.TestCase):
         output = self.c.get('test-key')
         expected = 15
         self.assertEqual(output, expected, 'ERROR: calling get on the key returns incorrect value')
+
+    def test_get_non_key_value_gracefully_fail(self):
+        output = self.c.get('non-exist')
+        expected = None
+        self.assertEqual(output, expected, 'ERROR: get non existing key should return none and not raise exception')

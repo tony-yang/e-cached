@@ -12,7 +12,6 @@ def main():
         if not cs:
             cs = CacheClient()
         command = input('> ')
-        print('Command = {}'.format(command))
         command.strip()
         if command.lower() == 'quit' or command.lower() == 'exit':
             break

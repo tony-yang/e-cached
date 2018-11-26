@@ -6,7 +6,10 @@ setup(
     packages=find_packages(),
 
     entry_points = {
-        'console_scripts': ['pycache=py_cached.cli.cached:main']
+        'console_scripts': [
+            'pycache=py_cached.cli.ecache:main',
+            'pycached=py_cached.cli.ecached:main'
+        ]
     },
 
     install_requires=[
